@@ -9,9 +9,10 @@
         <!-- Left Side: Informational Context -->
         <div class="contact-info-panel">
             <span class="section-badge">Get in Touch</span>
-            <h2 class="contact-headline">Let’s engineer something exceptional.</h2>
+            <h2 class="contact-headline">Let’s use your data to make a difference.</h2>
             <p class="contact-desc">
-                Have a complex systems architecture problem, cloud scaling hurdle, or a next-generation engineering project? Drop us a line.
+                Need to automate a business process, build an ML system, or turn research data into a working application? Tell us what you’re working on, and we’ll design the right technical solution.
+
             </p>
             
             <div class="direct-contact-channels">
@@ -28,6 +29,15 @@
 
         <!-- Right Side: Interactive Enterprise Form -->
         <div class="contact-form-panel">
+            <!-- Success Notification Toast Banner -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div style="background-color: #111111; border: 1px solid #333333; color: #ffffff; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.95rem;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             <form method="POST" action="" class="minimalist-dark-form">
                 {% csrf_token %}
                 
@@ -57,6 +67,7 @@
         </div>
 
     </div>
+
 
     <!-- Page Footer -->
     <footer class="site-footer">
