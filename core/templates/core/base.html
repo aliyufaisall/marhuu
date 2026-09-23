@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marhuu - Engineering Digital Excellence</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <!-- Navigation Header (Global shell wrapper) -->
+        <header class="site-header">
+            <div class="logo">
+                <a href="{% url 'home' %}">Marhuu</a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main Window Content Wrapper -->
+        <main class="main-content">
+            {% block content %}
+            <!-- index.html content will inject right here -->
+            {% endblock content %}
+        </main>
+
+    </div>
+
+</body>
+</html>

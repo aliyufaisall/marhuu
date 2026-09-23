@@ -1,0 +1,32 @@
+# --- Python Clutter & Caches ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- Virtual Environments (The 4,000+ files you experienced) ---
+.venv/
+venv/
+marhuu_env/
+ENV/
+env.bak/
+venv.bak/
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# --- Environments & Secrets ---
+.env
+.env.local
+.env.*
+.secrets
+
+# --- Operating System Junk ---
+.DS_Store
+Thumbs.db

@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<!-- Dedicated Contact Page -->
+<section class="contact-page-wrapper">
+    
+    <div class="contact-layout-grid">
+        
+        <!-- Left Side: Informational Context -->
+        <div class="contact-info-panel">
+            <span class="section-badge">Get in Touch</span>
+            <h2 class="contact-headline">Let’s engineer something exceptional.</h2>
+            <p class="contact-desc">
+                Have a complex systems architecture problem, cloud scaling hurdle, or a next-generation engineering project? Drop us a line.
+            </p>
+            
+            <div class="direct-contact-channels">
+                <div class="channel-group">
+                    <h4>Email</h4>
+                    <a href="mailto:hello@marhuu.com">hello@marhuu.com</a>
+                </div>
+                <div class="channel-group">
+                    <h4>Call</h4>
+                    <a href="tel:+2348000000000">[+234 800 000 0000](tel:+2348000000000)</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Interactive Enterprise Form -->
+        <div class="contact-form-panel">
+            <form method="POST" action="" class="minimalist-dark-form">
+                {% csrf_token %}
+                
+                <div class="form-row">
+                    <div class="input-field-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="input-field-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@company.com">
+                    </div>
+                </div>
+
+                <div class="input-field-group">
+                    <label for="subject">Project Focus</label>
+                    <input type="text" id="subject" name="subject" placeholder="e.g., Cloud Migration, Core API Rewrite">
+                </div>
+
+                <div class="input-field-group">
+                    <label for="message">Project Scope & Details</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Tell us about your project constraints, technology choices, and timelines..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit-btn">Send Inquiry</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Page Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Marhuu. Engineering Digital Excellence. All rights reserved.</p>
+    </footer>
+
+</section>
+{% endblock content %}
