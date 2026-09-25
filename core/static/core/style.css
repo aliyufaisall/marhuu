@@ -17,25 +17,44 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #0a0a0a; /* Slightly lighter deep-dark outer frame layer */
+    /* FIX: Match the pitch-black variable exactly */
+    background-color: var(--bg-color); 
     color: var(--text-main);
     line-height: 1.5;
-    padding: 2rem 0;
+    /* FIX: Remove standard top/bottom padding so the fixed header mounts flush to the top edge */
+    padding: 0; 
+    margin: 0;
 }
 
 /* The dark canvas page layout */
 .page-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    /* FIX: Remove max-width and centering properties so it expands to the full width of the screen */
+    width: 100%;
     background-color: var(--bg-color);
-    min-height: 90vh;
-    border-radius: 8px;
-    border: 1px solid var(--border-light);
-    padding-top: 70px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    /* DESKTOP PADDING */
-    padding: 2rem 4rem; 
+    min-height: 100vh;
+    
+    /* FIX: Remove the bounding borders and shadow effects that emphasize the floating box shape */
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    
+    /* Keep your header buffer and desktop margins safe */
+    padding-top: 80px; 
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-bottom: 2rem;
+    box-sizing: border-box; /* Ensures internal padding changes do not trigger horizontal scrolling */
 }
+
+/* Responsive adjustment to keep padding comfortable on smaller mobile devices */
+@media (max-width: 768px) {
+    .page-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 70px;
+    }
+}
+
 
 /* Base utility for modern link resets */
 a {
@@ -53,17 +72,17 @@ a:hover {
 
 /* Ensure header uses flexbox for alignment */
 .site-header {
-  position: fixed;        /* Keeps the header glued to the top during scroll */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between; /* Logo on left, Hamburger on right */
+  justify-content: space-between;
   align-items: center;
-  padding: 15px 24px;     /* Comfortable mobile padding spacing */
+  padding: 15px 24px;
   background-color: #000;
-  box-sizing: border-box; /* Prevents padding from causing horizontal scroll */
-  z-index: 1000;          /* Keeps header on top of all overlapping body text */
+  box-sizing: border-box; /* CRITICAL: Keeps padding from expanding past screen edges */
+  z-index: 1000;
 }
 
 .nav-menu ul {
@@ -88,11 +107,14 @@ a:hover {
 }
 
 .menu-toggle .bar {
+  display: block;          /* Forces the lines to render */
   height: 2px;
-  width: 100%;
-  background-color: #fff;
+  width: 25px;            /* Gives the lines a solid width footprint */
+  background-color: #fff; /* MUST be white or a bright accent to show against black */
+  margin: 5px auto;       /* Spacing between the three horizontal bars */
   transition: all 0.3s ease;
 }
+
 
 /* Mobile Breakpoint (Screens 768px wide and below) */
 @media (max-width: 768px) {
@@ -735,3 +757,14 @@ a:hover {
     text-align: center;
   }
 }
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex !important; /* Forces the hamburger wrapper to display */
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;            /* Ensures it sits structurally higher than the menu list */
+  }
+}
+
