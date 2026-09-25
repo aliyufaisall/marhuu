@@ -12,32 +12,45 @@
 </head>
 <body>
 
-    <div class="page-container">
+   <div class="page-container">
         
-        <!-- Navigation Header (Global shell wrapper) -->
-        <header class="site-header">
-            <div class="logo">
-                <a href="{% url 'home' %}">Marhuu</a>
-            </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'services' %}">Services</a></li>
-                    <li><a href="{% url 'projects' %}">Projects</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <!-- Navigation Header (Global shell wrapper) -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="{% url 'home' %}">Marhuu</a>
+        </div>
+        
+        <!-- Hamburger Menu Button -->
+        <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
 
-        <!-- Main Window Content Wrapper -->
-        <main class="main-content">
-            {% block content %}
-            <!-- index.html content will inject right here -->
-            {% endblock content %}
-        </main>
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    </div>
+    <!-- Main Window Content Wrapper -->
+    <main class="main-content">
+        {% block content %}
+        <!-- index.html content will inject right here -->
+        {% endblock content %}
+    </main>
 
+</div>
+ 
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
 </body>
-</html>
