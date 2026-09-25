@@ -31,6 +31,7 @@ body {
     min-height: 90vh;
     border-radius: 8px;
     border: 1px solid var(--border-light);
+    padding-top: 70px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     /* DESKTOP PADDING */
     padding: 2rem 4rem; 
@@ -52,13 +53,17 @@ a:hover {
 
 /* Ensure header uses flexbox for alignment */
 .site-header {
+  position: fixed;        /* Keeps the header glued to the top during scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Logo on left, Hamburger on right */
   align-items: center;
-  padding: 20px 40px;
+  padding: 15px 24px;     /* Comfortable mobile padding spacing */
   background-color: #000;
-  position: relative; /* Crucial for absolute positioning of mobile menu */
-  z-index: 100;
+  box-sizing: border-box; /* Prevents padding from causing horizontal scroll */
+  z-index: 1000;          /* Keeps header on top of all overlapping body text */
 }
 
 .nav-menu ul {
@@ -91,8 +96,15 @@ a:hover {
 
 /* Mobile Breakpoint (Screens 768px wide and below) */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex; /* Show the hamburger button */
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;            /* Drops down cleanly directly from the header edge */
+    right: 0;             /* Aligns the mobile panel to the right side edge */
+    width: 200px;         /* Limits width so it doesn't take up the full screen */
+    background-color: #000;
+    padding: 20px 0;
+    box-shadow: -5px 5px 15px rgba(0,0,0,0.5); /* Subtle depth separation */
   }
 
   .nav-menu {
@@ -110,6 +122,9 @@ a:hover {
     flex-direction: column; /* Stack links vertically */
     align-items: center;
     gap: 25px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 
   /* JavaScript will toggle this class to show the menu */
@@ -670,4 +685,53 @@ a:hover {
         gap: 1.25rem 1.5rem; /* Neat vertical and horizontal spacing */
         padding: 0;
     }
+}
+/* --- Fix for the Overlapping Text Layout --- */
+
+/* 1. Stack the layout vertically on mobile instead of forcing a tight grid */
+@media (max-width: 768px) {
+  .about-hero-grid {
+    display: flex;
+    flex-direction: column; /* Stacks title above the narrative naturally */
+    gap: 24px;              /* Creates safe, clean spacing between the elements */
+    padding: 20px;
+    height: auto !important; /* Prevents any hardcoded heights from squishing text */
+  }
+
+  .about-meta-title {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: auto !important;
+  }
+
+  /* 2. Scale down the huge headline text and give it natural line spacing */
+  .editorial-headline {
+    font-size: 2.2rem;       /* Reduces size slightly so it fits mobile screens beautifully */
+    line-height: 1.2;        /* Gives lines inside the title room to breathe */
+    margin: 0;               /* Resets browser margins */
+    padding-bottom: 12px;    /* Safeguards a gap right underneath the headline */
+  }
+
+  /* 3. Ensure paragraphs stack smoothly and don't overlap */
+  .about-narrative {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;               /* Puts clean spacing between paragraph blocks */
+  }
+
+  .lead-paragraph, 
+  .body-paragraph {
+    margin: 0;               /* Lets the flex gap handle the spacing reliably */
+    line-height: 1.6;        /* Increases readability for paragraphs on mobile */
+  }
+  
+  /* Bonus: Ensuring your stats section scales nicely on mobile too */
+  .about-stats-row {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 40px 20px;
+    text-align: center;
+  }
 }
