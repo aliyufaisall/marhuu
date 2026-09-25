@@ -1,0 +1,592 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Updated for pitch-black theme */
+    --bg-color: #000000;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --accent-btn: #ffffff;
+    --text-btn-dark: #000000;
+    --border-light: #222222;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0a0a; /* Slightly lighter deep-dark outer frame layer */
+    color: var(--text-main);
+    line-height: 1.5;
+    padding: 2rem 0;
+}
+
+/* The dark canvas page layout */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    min-height: 90vh;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    padding: 2rem 4rem;
+}
+
+/* Base utility for modern link resets */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--text-muted);
+}
+/* ==========================================================================
+   Navigation Header Styles
+   ========================================================================== */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.site-header .logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu ul li a {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.nav-menu ul li a:hover {
+    color: var(--text-main);
+}
+
+/* Custom layout marker for the active link item as seen in the mockup */
+.nav-menu ul li.active a {
+    color: var(--text-main);
+    position: relative;
+    font-weight: 500;
+}
+
+.nav-menu ul li.active a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: var(--text-main);
+    border-radius: 50%;
+}
+/* ==========================================================================
+   Hero Section Styles
+   ========================================================================== */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 6rem 0;
+}
+
+.hero-text-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Elegant high-contrast button */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-btn);
+    color: var(--text-btn-dark);
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.cta-button:hover {
+    color: var(--text-btn-dark);
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Asymmetric Abstract Graphic Framework */
+.hero-graphic-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.abstract-cube-graphic {
+    width: 280px;
+    height: 280px;
+    border: 2px dashed #333333;
+    border-radius: 16px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #111111 0%, #000000 100%);
+}
+
+.abstract-cube-graphic::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transform: rotate(45deg);
+}
+
+.abstract-cube-graphic::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transform: rotate(-15deg);
+}
+
+/* Responsive adjustment for clean viewports */
+@media (max-width: 968px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 4rem 0;
+        text-align: center;
+    }
+    
+    .hero-text-area {
+        align-items: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+/* ==========================================================================
+   Premium Standalone About Page Styles
+   ========================================================================== */
+.about-page-wrapper {
+    padding: 6rem 0 4rem 0;
+}
+
+/* Asymmetric Editorial Layout Grid */
+.about-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+    margin-bottom: 7rem;
+}
+
+.about-meta-title {
+    position: sticky;
+    top: 4rem;
+}
+
+.editorial-headline {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    color: var(--text-main);
+}
+
+/* Typography Hierarchy for Narrative Body */
+.about-narrative .lead-paragraph {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+}
+
+.about-narrative .body-paragraph {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* ==========================================================================
+   Minimalist Stats Row & Hover Micro-Interactions
+   ========================================================================== */
+.about-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    border-top: 1px solid var(--border-light);
+    padding-top: 4rem;
+    margin-top: 2rem;
+}
+
+.stat-block {
+    padding: 1.5rem 0;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smooth lift and text glow shift on hover */
+.stat-block:hover {
+    transform: translateY(-4px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-main);
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.stat-block:hover .stat-number {
+    color: #a0a0a0; /* Subtle text fade change on interaction */
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+}
+
+/* Responsive Fixes for Devices */
+@media (max-width: 968px) {
+    .about-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+    
+    .editorial-headline {
+        font-size: 2.4rem;
+    }
+    
+    .about-narrative .lead-paragraph {
+        font-size: 1.15rem;
+    }
+    
+    .about-stats-row {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-top: 3rem;
+    }
+    
+    .stat-number {
+        font-size: 2.8rem;
+    }
+}
+/* ==========================================================================
+   Dedicated Services Page Layout & Typography
+   ========================================================================== */
+.services-page-section {
+    padding: 6rem 0;
+}
+
+.services-intro-header {
+    margin-bottom: 6rem;
+    max-width: 800px;
+}
+
+.services-main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    color: var(--text-main);
+}
+
+.services-subheadline {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+}
+
+/* Row-by-Row Minimalist Capability Layout */
+.services-expanded-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.capability-row {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 4rem;
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+    transition: background-color 0.4s ease;
+}
+
+/* Subtle row fade interaction on hover */
+.capability-row:hover {
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.capability-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.cap-num {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.capability-meta h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    color: var(--text-main);
+}
+
+.capability-details p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+/* Clean, inline pill chips for technologies */
+.capability-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+}
+
+.capability-tags li {
+    font-size: 0.85rem;
+    background-color: #0d0d0d;
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    padding: 0.5rem 1.2rem;
+    border-radius: 24px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Pill glow effect on hover */
+.capability-tags li:hover {
+    border-color: #555555;
+    background-color: #151515;
+}
+
+/* ==========================================================================
+   Responsive Adaptations for Services Mobile Layout
+   ========================================================================== */
+@media (max-width: 968px) {
+    .services-main-title {
+        font-size: 2.5rem;
+    }
+    
+    .services-subheadline {
+        font-size: 1.1rem;
+    }
+    
+    .capability-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 3.5rem 0;
+    }
+    
+    .capability-meta h3 {
+        font-size: 1.6rem;
+    }
+}
+/* ==========================================================================
+   Premium Contact Page & Input Field Forms
+   ========================================================================== */
+.contact-page-wrapper {
+    padding: 6rem 0 2rem 0;
+}
+
+.contact-layout-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-bottom: 6rem;
+}
+
+.contact-headline {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.contact-desc {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 3rem;
+}
+
+.direct-contact-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.channel-group h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.channel-group a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   Minimalist Form Component Fields
+   ========================================================================== */
+.minimalist-dark-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-field-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.input-field-group input,
+.input-field-group textarea {
+    background-color: #050505;
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    padding: 0.9rem 1.2rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: border-color 0.2s ease, outline-color 0.2s ease;
+}
+
+/* Input line activation states */
+.input-field-group input:focus,
+.input-field-group textarea:focus {
+    outline: none;
+    border-color: #666666;
+}
+
+.input-field-group ::placeholder {
+    color: #444444;
+}
+
+/* Form Action Trigger Button */
+.form-submit-btn {
+    background-color: var(--accent-btn);
+    color: var(--text-btn-dark);
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.form-submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Global Shared Footer Context */
+.site-footer {
+    border-top: 1px solid var(--border-light);
+    padding-top: 2.5rem;
+    text-align: center;
+}
+
+.site-footer p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Tablet & Mobile Breakpoints for Form Rows */
+@media (max-width: 968px) {
+    .contact-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+    .contact-headline {
+        font-size: 2.4rem;
+    }
+}
