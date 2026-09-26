@@ -329,8 +329,7 @@ a:hover {
 }
 
 .about-meta-title {
-    position: sticky;
-    top: 4rem;
+    position: static;
 }
 
 .editorial-headline {
