@@ -757,14 +757,27 @@ a:hover {
     text-align: center;
   }
 }
+/* --- Mobile Styles --- */
 @media (max-width: 768px) {
+  
   .menu-toggle {
-    display: flex !important; /* Forces the hamburger wrapper to display */
+    display: flex !important; 
     flex-direction: column;
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1001;            /* Ensures it sits structurally higher than the menu list */
+    z-index: 1001;            
   }
-}
+
+  /* YES! Place it right here, inside the media query brackets */
+  .menu-toggle .bar {
+    display: block !important;          
+    height: 2px !important;
+    width: 25px !important;            
+    background-color: #ffffff !important; 
+    margin: 5px auto !important;       
+    transition: all 0.3s ease;
+  }
+
+} /* <--- Make sure this final closing bracket is at the very end! */
 
