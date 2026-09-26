@@ -83,7 +83,15 @@ a:hover {
   background-color: #000;
   box-sizing: border-box; /* CRITICAL: Keeps padding from expanding past screen edges */
   z-index: 1000;
+  overflow: visible;      /* Crucial: Prevents the header from clipping child elements */
 }
+ /* Ensure header layout structures properly on mobile viewports */
+  .site-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
 
 .nav-menu ul {
   display: flex;
@@ -760,24 +768,32 @@ a:hover {
 /* --- Mobile Styles --- */
 @media (max-width: 768px) {
   
-  .menu-toggle {
+.menu-toggle {
     display: flex !important; 
-    flex-direction: column;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;            
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    width: 30px !important;  /* Creates an accessible physical tap target width */
+    height: 30px !important; /* Creates an accessible physical tap target height */
+    
+    /* Layering logic: Pulls button to the front layer inside the header */
+    position: relative !important;
+    z-index: 1002 !important; 
   }
 
-  /* YES! Place it right here, inside the media query brackets */
+  /* Style and paint the 3 horizontal lines inside the hamburger button */
   .menu-toggle .bar {
     display: block !important;          
     height: 2px !important;
     width: 25px !important;            
-    background-color: #ffffff !important; 
-    margin: 5px auto !important;       
-    transition: all 0.3s ease;
+    background-color: #ffffff !important; /* Solid white bars to pop against black */
+    margin: 4px 0 !important;             /* Balanced vertical space between lines */
+    transition: all 0.3s ease !important; /* Smooth transition for animations */
   }
 
-} /* <--- Make sure this final closing bracket is at the very end! */
+} /* <--- Final media query closing bracket */
 
